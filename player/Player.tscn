@@ -152,17 +152,20 @@ graph_offset = Vector2( -140, 0 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
 [sub_resource type="CapsuleShape2D" id=30]
+height = 16.0419
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2147483649
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+offset = Vector2( 0, -8 )
 hframes = 60
-frame = 12
+frame = 38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 9.22628 )
 rotation = -1.5708
 shape = SubResource( 1 )
 
@@ -188,18 +191,25 @@ anims/player_run_up = ExtResource( 10 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 28 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 29 )
-parameters/attack/blend_position = Vector2( 0, 0 )
-parameters/idle/blend_position = Vector2( 0, 0 )
-parameters/roll/blend_position = Vector2( 0, 0 )
-parameters/run/blend_position = Vector2( 0, 0 )
+parameters/attack/blend_position = Vector2( 0, 1 )
+parameters/idle/blend_position = Vector2( 0, 1 )
+parameters/roll/blend_position = Vector2( 0, 1 )
+parameters/run/blend_position = Vector2( 0, 1 )
 
-[node name="Position2D" type="Position2D" parent="."]
+[node name="HitBox_Pivot" type="Position2D" parent="."]
+__meta__ = {
+"_gizmo_extents_": 8.0
+}
 
-[node name="Hitbox" parent="." instance=ExtResource( 19 )]
+[node name="Sword_Hitbox" parent="HitBox_Pivot" instance=ExtResource( 19 )]
+collision_layer = 2147483650
+collision_mask = 25
 
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
+[node name="CollisionShape2D" parent="HitBox_Pivot/Sword_Hitbox" index="0"]
+position = Vector2( -9.53674e-07, 15.0265 )
+rotation = -1.5708
 shape = SubResource( 30 )
+disabled = true
 
-[editable path="Hitbox"]
+[editable path="HitBox_Pivot/Sword_Hitbox"]
