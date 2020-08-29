@@ -158,12 +158,13 @@ height = 16.0419
 collision_layer = 2
 collision_mask = 2147483649
 script = ExtResource( 2 )
+MAX_SPEED = 100
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 offset = Vector2( 0, -8 )
 hframes = 60
-frame = 38
+frame = 39
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
@@ -207,9 +208,14 @@ collision_layer = 2147483650
 collision_mask = 25
 
 [node name="CollisionShape2D" parent="HitBox_Pivot/Sword_Hitbox" index="0"]
-position = Vector2( -9.53674e-07, 15.0265 )
+position = Vector2( 0, 11 )
 rotation = -1.5708
 shape = SubResource( 30 )
+disabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox_Pivot/Sword_Hitbox"]
+position = Vector2( 0, 9.92188 )
+polygon = PoolVector2Array( 14.9348, -4.4387, 11.7063, -0.34396, 5.24916, 1.8609, -2.62535, 0.679726, -10.7361, -6.72231, -20.5005, -1.44639, -17.5869, 4.38074, -13.1772, 8.16051, -8.37374, 10.6804, -1.8379, 12.2553, 2.96555, 11.8615, 8.6352, 9.73541, 12.5725, 5.95565, 15.6435, -0.18647, 15.8797, -6.80106 )
 disabled = true
 
 [editable path="HitBox_Pivot/Sword_Hitbox"]
